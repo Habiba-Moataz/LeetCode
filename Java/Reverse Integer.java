@@ -1,6 +1,7 @@
 class Solution {
     public int reverse(int x) {
-        int output =0 ,moduls,process = Math.abs(x);
+        long output =0;
+        int moduls,process = Math.abs(x);
         int digits = (process == 0) ? 0 : (int) Math.log10(Math.abs(process));
         while (process >= 10){
             moduls = process%10 ;
@@ -8,10 +9,15 @@ class Solution {
             process = process/10;
             digits--;
         }
-        output += process;
+            output += process;
         if (x<0){
-            output = output*-1;
+             output = output*-1;
         }
-        return output;
+        if ((output>=-2147483648) && ( output <= 2147483647) ){
+            return (int)output;
+        }
+        else {
+            return 0;
+        }
     }
 }
